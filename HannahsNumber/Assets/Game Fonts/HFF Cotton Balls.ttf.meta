@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 5799862f1c8b00942b9d6c6a7c4aa8d7
+timeCreated: 1557811459
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: HFF Cotton Balls
+  fontNames:
+  - HFF Cotton Balls
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 5640f24dfd35134449c16f2a31aeeaa1, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
