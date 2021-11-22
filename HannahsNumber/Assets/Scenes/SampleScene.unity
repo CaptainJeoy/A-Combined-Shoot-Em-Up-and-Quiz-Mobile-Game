@@ -15804,7 +15804,7 @@ MonoBehaviour:
   correctColour: {r: 0.17645603, g: 0.5377358, b: 0.017248094, a: 1}
   failedColour: {r: 0.5566038, g: 0.017853292, b: 0.017853292, a: 1}
   lerpSpeed: 12
-  delayForChoice: 15
+  delayForChoice: 10
   delayforDisplay: 1
   Loader: {fileID: 529745119}
   BoxImage: {fileID: 1267171738}
