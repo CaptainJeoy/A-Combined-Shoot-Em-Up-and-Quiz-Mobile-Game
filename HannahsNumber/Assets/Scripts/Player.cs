@@ -12,6 +12,8 @@ public class Player : Singleton<Player>
     public Rigidbody2D PlayerRb;
 	public Rigidbody2D PlayerBullet, PlayerBullet2;
 
+	public FloatingJoystick floatingJoystick;
+
 	public GameObject Muzzle;
 
 	public Audio audioObj;
@@ -56,6 +58,8 @@ public class Player : Singleton<Player>
 	int counter = 0;
 
 	bool runOnce;
+
+	float xAxisPositive, xAxisNegative;
 
 	void Awake()
 	{
@@ -126,11 +130,20 @@ public class Player : Singleton<Player>
 		{
 			transform.position = new Vector3 (HalfScreenWidth, transform.position.y, transform.position.z);
 		}
-			
-		float xAxisPositive = Swiput.TouchInRectTransform (RightScreenArea, 1f, true, false);
-		float xAxisNegative = Swiput.TouchInRectTransform (LeftScreenArea, -1f, true, false);
 
-		float totalXAxis = xAxisPositive + xAxisNegative;
+        switch (GameManager.Instance.controlSyle)
+        {
+            case GameManager.ControlSyle.Tap:
+				xAxisPositive = Swiput.TouchInRectTransform(RightScreenArea, 1f, true, false);
+				xAxisNegative = Swiput.TouchInRectTransform(LeftScreenArea, -1f, true, false);
+				break;
+            case GameManager.ControlSyle.Joystick:
+				xAxisPositive = floatingJoystick.Horizontal * Time.deltaTime * 3.5f;
+				xAxisNegative = floatingJoystick.Vertical * Time.deltaTime * 3.5f;
+				break;
+        }
+
+        float totalXAxis = xAxisPositive + xAxisNegative;
 
 		PlayerMovement (totalXAxis);
 		HealthUpdate ();

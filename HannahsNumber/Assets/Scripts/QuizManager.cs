@@ -52,13 +52,14 @@ public class QuizManager : MonoBehaviour
 
     private QuizType quizType;
 
-    private bool IsPanelOpened = false, IsAnyButtonSelected = false, timeElasped = false;
+    private bool IsPanelOpened = false, IsAnyButtonSelected = false, timeElasped = false, isSubmitClicked = false;
 
     private QuizOptionSO quizOptionSO;
 
     private ChoiceOption choiceOption, correctChoiceOption;
 
     private HorizontalLayoutGroup layoutGroup;
+
 
     private void Start()
     {
@@ -74,45 +75,61 @@ public class QuizManager : MonoBehaviour
         qpCurrScale = Vector3.Lerp(qpCurrScale, qpDesiScale, Time.unscaledDeltaTime * lerpSpeed);
         QuizPanel.transform.localScale = qpCurrScale;
 
-        if (IsPanelOpened)
+        
+        if (IsPanelOpened && !isSubmitClicked)
             Loader.fillAmount = Mathf.Clamp01(((delayForQuiz += Time.unscaledDeltaTime) / quizTimeSpan));
 
-        if (IsPanelOpened && Loader.fillAmount >= 1f)
+        
+        if (IsPanelOpened && Loader.fillAmount >= 1f || isSubmitClicked)
         {
             timeElasped = true;
 
-            switch (quizType)
-            {
-                case QuizType.MultipleChoice:
-                    if (CheckIfOptionSelectedIsCorrect())
-                    {
-                        //audioObjWin.PlayGun();
-                        CorrectAnswerDisplay();
-                        displayAnswerSpan -= Time.unscaledDeltaTime;
-
-                        if (displayAnswerSpan <= 0f)
-                        {
-                            ClosePanel();
-                            GameManager.Instance.RandomSpawnPowerUp();
-                        }
-                    }
-                    else
-                    {
-                        //audioObjFail.PlayGun();
-                        FailedAnswerDisplay();
-                        displayAnswerSpan -= Time.unscaledDeltaTime;
-
-                        if (displayAnswerSpan <= 0f)
-                        {
-                            ClosePanel();
-                        }
-                    }
-                    break;
-                case QuizType.Theory:
-                    ClosePanel();
-                    break;
-            }
+            ScoreQuiz();
         }
+    }
+
+    private void ScoreQuiz()
+    {
+        switch (quizType)
+        {
+            case QuizType.MultipleChoice:
+                if (CheckIfOptionSelectedIsCorrect())
+                {
+                    //audioObjWin.PlayGun();
+                    CorrectAnswerDisplay();
+                    displayAnswerSpan -= Time.unscaledDeltaTime;
+
+                    if (displayAnswerSpan <= 0f)
+                    {
+                        displayAnswerSpan = delayforDisplay;
+
+                        ClosePanel();
+                        GameManager.Instance.RandomSpawnPowerUp();
+                    }
+                }
+                else
+                {
+                    //audioObjFail.PlayGun();
+                    FailedAnswerDisplay();
+                    displayAnswerSpan -= Time.unscaledDeltaTime;
+
+                    if (displayAnswerSpan <= 0f)
+                    {
+                        displayAnswerSpan = delayforDisplay;
+
+                        ClosePanel();
+                    }
+                }
+                break;
+            case QuizType.Theory:
+                ClosePanel();
+                break;
+        }
+    }
+
+    public void SumbitButton()
+    {
+        isSubmitClicked = true;
     }
 
     public void OpenPanel()
@@ -137,6 +154,7 @@ public class QuizManager : MonoBehaviour
         }
         */
 
+        GameManager.Instance.DeactivateQuizButton();
         AudioSingle.Instance.Play();
 
         quizType = QuizType.MultipleChoice;
@@ -156,6 +174,7 @@ public class QuizManager : MonoBehaviour
 
         IsPanelOpened = true;
         displayAnswerSpan = delayforDisplay;
+        isSubmitClicked = false;
 
         TimeManager.Instance.FreezeTime();
     }
@@ -183,6 +202,7 @@ public class QuizManager : MonoBehaviour
         QuizPanel.SetActive(false);
         HudCanvas.SetActive(true);
         PowerUpPanel.SetActive(true);
+        isSubmitClicked = false;
 
         TimeManager.Instance.UnFreezeTime();
     }

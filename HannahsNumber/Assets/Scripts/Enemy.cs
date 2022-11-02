@@ -53,7 +53,7 @@ public class Enemy : Singleton<Enemy>
 
 		runOnce = false;
 
-		if (!GameManager.Instance.FirstTime)
+		if (!GameManager.Instance.isFirstTime)
 			bulletSelector = Random.Range (0, 1);
 		else
 			bulletSelector = 0;

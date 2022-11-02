@@ -19,6 +19,12 @@ public class GameManager : Singleton<GameManager>
 		Laser
 	}
 
+	public enum ControlSyle
+    {
+		Tap,
+		Joystick
+    }
+
 	public Audio audioObj, audioObj2;
 
 	public Camera Cam;
@@ -26,7 +32,7 @@ public class GameManager : Singleton<GameManager>
 	public Image[] ControlVisualizers;
 
 	[HideInInspector]
-	public bool IsGameOver = false, FirstTime = false, IsStartGame = false,
+	public bool IsGameOver = false, isFirstTime = false, IsStartGame = false,
 	IsMultiplier = false, IsInvincible = false, IsExtraHealth = false, IsInMenu = false;
 
 	[HideInInspector]
@@ -35,12 +41,17 @@ public class GameManager : Singleton<GameManager>
 	[HideInInspector]
 	public int PlayerDamageAmount = 0, EnemyDamageAmount = 0;
 
+	[HideInInspector]
+	public ControlSyle controlSyle;
+
 	public Transform[] PowerUpSpawnPoints;
 
 	public Transform LeftEndWayPoint, RightEndWayPoint, 
 	LeftPowerUpPoint, RightPowerUpPoint;
 
 	public WhoWon HasAnybodyWon = WhoWon.NobodyYet;
+
+	public GameObject Shield;
 
 	public GameObject PlayerObj;
 	public GameObject EnemyObj;
@@ -56,6 +67,7 @@ public class GameManager : Singleton<GameManager>
 	public GameObject MultiplierPanel;
 	public GameObject InvinciblePanel;
 	public GameObject LaserPanel;
+	public GameObject pointerHand;
 
 	public GameObject MultiplierPowerUp;
 	public GameObject InvinciblePowerUp;
@@ -70,7 +82,7 @@ public class GameManager : Singleton<GameManager>
 
 	public Text WinScore, WinHighScore, LoseHighScore, CurrentScore;
 
-	public float StartDelay = 5, PowerUpDelay = 20f,
+	public float StartDelay = 7, PowerUpDelay = 20f,
 	MultiPlierWaitTime = 30f, InvincibleWaitTime = 30f, ExtraHealthWaitTime = 20f, QuizWaitTime = 10f,
 		LaserWaitTime = 30f;
 
@@ -80,11 +92,9 @@ public class GameManager : Singleton<GameManager>
 	private float startCounter = 0f, multiplierCountDown = 0f, invincibleCountDown = 0f, quizCountDown = 0f,
 		laserCountdown = 0f;
 
-	const string highScoreKey = "CaptainJeoy", ColourKey = "SydneyPark";
-
 	float HalfScreenWidth;
 
-	public Toggle tog;
+	private const string key = "Hannah";
 
 	void Awake()
 	{
@@ -107,6 +117,16 @@ public class GameManager : Singleton<GameManager>
 			LastHighScore = PlayerPrefs.GetInt (highScoreKey);
 		}
 		*/
+
+		if (PlayerPrefs.HasKey(key))
+		{
+			isFirstTime = false;
+		}
+		else
+		{
+			isFirstTime = true;
+			PlayerPrefs.SetInt(key, 0);
+		}
 
 		audioObj2.PlayGun();
 	}
@@ -231,6 +251,8 @@ public class GameManager : Singleton<GameManager>
 			WinPanel.SetActive (false);
 			LosePanel.SetActive (true);
 
+			HUDPanel.SetActive(false);
+
 			/*
 			if (LastHighScore == 1000000) 
 			{
@@ -256,6 +278,8 @@ public class GameManager : Singleton<GameManager>
 
 			LosePanel.SetActive (false);
 			WinPanel.SetActive (true);
+
+			HUDPanel.SetActive(false);
 
 			/*
 			WinScore.text = Mathf.RoundToInt (Time.time - TimeElasped).ToString ();
@@ -324,7 +348,7 @@ public class GameManager : Singleton<GameManager>
 				SpawnExtraHealth();
 				break;
 			case 6:
-				SpawnLaser();
+				SpawnInvincible();
 				SpawnExtraHealth();
 				break;
 		}
@@ -386,14 +410,14 @@ public class GameManager : Singleton<GameManager>
 			InvinciblePanel.SetActive (false);
 			invincibleCountDown = PowerUpDelay;
 
-			Player.Instance.PlayerSprite.color = Color.white;
-		
+			Shield.SetActive(false);
+
 			return;
 		}
 
 		InvinciblePanel.SetActive (true);
 
-		Player.Instance.PlayerSprite.color = Color.blue;
+		Shield.SetActive(true);
 
 		invincibleCountDown -= Time.deltaTime;
 		float countDown = ((PowerUpDelay - invincibleCountDown) / PowerUpDelay);
@@ -427,12 +451,37 @@ public class GameManager : Singleton<GameManager>
         {
 			QuizButton.interactable = true;
 			QuizText.enabled = true;
-        }
+
+			if (isFirstTime)
+			{
+				pointerHand.SetActive(true);
+				isFirstTime = false;
+			}
+		}
         else
         {
+			pointerHand.SetActive(false);
 			QuizButton.interactable = false;
 			QuizText.enabled = false;
 		}
+    }
+
+	public void DeactivateQuizButton()
+    {
+		QuizRadial.fillAmount = 0f;
+		pointerHand.SetActive(false);
+		QuizButton.interactable = false;
+		QuizText.enabled = false;
+	}
+
+	public void SetTapControls()
+    {
+		controlSyle = ControlSyle.Tap;
+    }
+
+	public void SetJoystickControls()
+    {
+		controlSyle = ControlSyle.Joystick;
     }
 
 	public void ResetQuizCounter()

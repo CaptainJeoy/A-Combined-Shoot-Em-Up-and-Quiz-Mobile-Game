@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2eb8835f91cdb4c8d2fc9e0149b122, type: 3}
+  m_Name: Founded 1
+  m_EditorClassIdentifier: 
+  Question: WHEN WAS WILD LIFE FOUNDED?
+  FalseOptionsList:
+  - 2001
+  - 200 BC
+  - 100 BC
+  - 1990
+  - 2077
+  - 2048
+  - 2012
+  - 2011
+  - 2002
+  - 2004
+  - 1890
+  choices:
+  - choice: 2011
+    isCorrectChoice: 1
+  - choice: 2005
+    isCorrectChoice: 0
+  - choice: 2021
+    isCorrectChoice: 0

@@ -1,13 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraAdjust : MonoBehaviour 
 {
 	enum AutoZoomOrientation
 	{
 		HeightBased,
-		WidthBased
+		WidthBased,
+		Both
 	}
 
 	public SpriteRenderer AreaReference;
@@ -26,6 +25,9 @@ public class CameraAdjust : MonoBehaviour
 			case AutoZoomOrientation.WidthBased:
 				AutoWidthZoomAdjust (AreaReference, cam);
 				break;
+			case AutoZoomOrientation.Both:
+				AutoRectZoomAdjust(AreaReference, cam);
+				break;
 		}
 	}
 
@@ -36,9 +38,25 @@ public class CameraAdjust : MonoBehaviour
 
 	void AutoWidthZoomAdjust (SpriteRenderer area, Camera cam)
 	{
-		float widthReso = (area.bounds.size.x * Screen.height) / Screen.width;
+		float widthReso = (area.bounds.size.x * (float)Screen.height) / (float)Screen.width;
 
 		cam.orthographicSize = widthReso / 2f;
+	}
+
+	void AutoRectZoomAdjust (SpriteRenderer area, Camera cam)
+    {
+		float screenRatio = (float)Screen.width / (float)Screen.height;
+		float areaRatio = area.bounds.size.x / area.bounds.size.y;
+
+        if (screenRatio >= areaRatio)
+        {
+			cam.orthographicSize = area.bounds.size.y / 2f;
+		}
+        else
+        {
+			float diffInSize = areaRatio / screenRatio;
+			cam.orthographicSize = area.bounds.size.y / 2f * diffInSize;
+		}
 	}
 }
 

@@ -2,10 +2,23 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
+[System.Serializable]
+struct SpeedRange
+{
+    public float min;
+    public float max;
+}
+
 public class TypingEffect : MonoBehaviour
 {
     [SerializeField] [TextArea] private string Sentence;
     [SerializeField] private Text text;
+
+    [SerializeField] [Range(1f, 0f)] private float typingSpeed = 0.1f;
+
+    [SerializeField] private SpeedRange speedRange;
+
+    [SerializeField] private bool useRandomSpeed = false;
 
     [SerializeField] private Audio audioObj;
 
@@ -28,7 +41,10 @@ public class TypingEffect : MonoBehaviour
             audioObj.PlayGun();
             i++;
 
-            yield return new WaitForSeconds(0.1f);
+            if (!useRandomSpeed)
+                yield return new WaitForSecondsRealtime(typingSpeed);
+            else
+                yield return new WaitForSecondsRealtime(Random.Range(speedRange.min, speedRange.max));
         }
     }
 
