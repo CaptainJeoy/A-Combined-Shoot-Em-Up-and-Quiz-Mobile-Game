@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2eb8835f91cdb4c8d2fc9e0149b122, type: 3}
+  m_Name: Other question 1
+  m_EditorClassIdentifier: 
+  Question: THE TOTAL ANGLE IN A TRIANGLE IS?
+  FalseOptionsList:
+  - 360 Degrees
+  - 45 Degrees
+  - 60 Degrees
+  - 3 Sides
+  - 4 Sides
+  choices:
+  - choice: 180 Degrees
+    isCorrectChoice: 1
+  - choice: 270 Degrees
+    isCorrectChoice: 0
+  - choice: 90 Degrees
+    isCorrectChoice: 0

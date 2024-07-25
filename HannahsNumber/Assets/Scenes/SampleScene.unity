@@ -863,7 +863,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: To Moon Active...
+  m_Text: Ellie's Essay
 --- !u!222 &178716124
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1196,8 +1196,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.8
-  m_Pitch: 1
+  m_Volume: 0.15
+  m_Pitch: 0.6
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -1893,11 +1893,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08141fe3b9b9d7841b3db02a779783ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sentence: 'Defeat The Boss To Get Hired.
+  Sentence: 'Defeat the Shape Boss.
 
 
-    Answer The Quiz Correctly To Help
-    You Out.'
+    Answer Each Quiz Correctly To Release Powerups.'
   text: {fileID: 400306659}
   typingSpeed: 0.05
   speedRange:
@@ -1940,7 +1939,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 720, y: 1306.1}
+  m_SizeDelta: {x: 720, y: 1370}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &420707091
 MonoBehaviour:
@@ -1966,9 +1965,9 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: fff7b8462d05cc14db87f93f04175a32, type: 3}
     m_FontSize: 45
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 150
+    m_MaxSize: 45
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -2196,7 +2195,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: VERDICT
+  m_Text: GAME OVER
 --- !u!222 &488808944
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8898,9 +8897,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'MOON ACTIVE
+  m_Text: 'Shape
 
-    JOB BATTLE'
+    Wars'
 --- !u!222 &1211645812
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14998,7 +14997,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: CLICK ME
+  m_Text: 'READ
+
+'
 --- !u!222 &1666135249
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15268,7 +15269,7 @@ MonoBehaviour:
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras: []
-  m_RendererIndex: -1
+  m_RendererIndex: 1
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
@@ -15357,32 +15358,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08141fe3b9b9d7841b3db02a779783ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sentence: 'Hello! thank you for checking this out.
-
-
-    I saw an offer on linkedin
-    for a unity engineer position at Moon Active.
-
-
-    Of which i applied for. I
-    then did a short mobile game jam as a homage to Moon Active, for being a phenomenal
-    mobile gaming company and to prove myself to the team at that i''m very capable
-    to fill in for this role.
-
-
-    I hope you like it.
-
-
-    I also really look
-    forward to working with the team.
-
-
-    Enjoy the game :)'
+  Sentence: "In the amazing book Moby Dick by the author Herman Melville, the author
+    recounts his story of being at sea. \n\nIn the first part of his book, the author,
+    calling himself Ishmael, is in a small sea-side town and he is sharing a bed
+    with a man named Queequeg.\r\n\r\nThe author and Queequeg go to church and later
+    set out on a ship captained by the pirate named Ahab, who is missing a leg, and
+    very much wants to kill the whale which is named Moby Dick, and which is white.\r\n\r\nIn
+    the course of the book, the pirate Ahab encounters many hardships. His entire
+    life is set around trying to kill a certain whale.\r\n\r\nI think this is sad
+    because this whale doesn\u2019t have any emotions, and doesn\u2019t know how
+    bad Ahab wants to kill him.\r\n\r\nHe\u2019s just a poor big animal. And I feel
+    bad for Ahab as well, because he thinks that his life will be better if he can
+    kill this whale, but in reality it won\u2019t help him at all.\r\n\r\nI was very
+    saddened by this book, and I felt many emotions for the characters.\r\n\r\nAnd
+    I felt saddest of all when I read the boring chapters that were only descriptions
+    of whales, because I knew that the author was just trying to save us from his
+    own sad story, just for a little while.\r\n\r\nThis book made me think about
+    my own life, and then it made me feel glad for my life."
   text: {fileID: 420707091}
-  typingSpeed: 0.1
+  typingSpeed: 0.022
   speedRange:
-    min: 0.09
-    max: 0.13
+    min: 0.02
+    max: 0.06
   useRandomSpeed: 1
   audioObj: {fileID: 270979961}
 --- !u!114 &1735307988
@@ -16195,7 +16192,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: VERDICT
+  m_Text: YOU WON
 --- !u!222 &1917915613
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17708,12 +17705,27 @@ MonoBehaviour:
     OptionText: {fileID: 40801198}
     IsSelected: 0
   quizOptionSOs:
-  - {fileID: 11400000, guid: 712dc4cc32fbd224593cb54c7b68e064, type: 2}
+  - {fileID: 11400000, guid: bbd5e5760f5899a44a6bcfb1e82597b6, type: 2}
+  - {fileID: 11400000, guid: f230fc275ccd2204c88db29911e98cef, type: 2}
+  - {fileID: 11400000, guid: 3cd85c2b1a6783f4ea96a6b086c00b86, type: 2}
+  - {fileID: 11400000, guid: 432c0eb7c37351640b882fc27a53671c, type: 2}
+  - {fileID: 11400000, guid: 9f1db15220c5a3b49b1f371a3e1a9196, type: 2}
+  - {fileID: 11400000, guid: a0eccdb02c9465a4e9844013f9511b8b, type: 2}
+  - {fileID: 11400000, guid: a1605e407e869ef4d83ad23a352e4961, type: 2}
   - {fileID: 11400000, guid: 6c2124590d0acb04597c8d901f31da1b, type: 2}
   - {fileID: 11400000, guid: b6b5c284eaad56c4a8ab53c2bea3c5a1, type: 2}
   - {fileID: 11400000, guid: fc905d4eb8e6a8f4b9140f5afcfa9706, type: 2}
-  - {fileID: 11400000, guid: bbd5e5760f5899a44a6bcfb1e82597b6, type: 2}
-  - {fileID: 11400000, guid: f230fc275ccd2204c88db29911e98cef, type: 2}
+  - {fileID: 11400000, guid: bf0bc36bd0e312a4993970a2d3227e54, type: 2}
+  - {fileID: 11400000, guid: 4c114b27e9d8b0842b009a4c14905dbb, type: 2}
+  - {fileID: 11400000, guid: 6294f464b5544ff478bfb76c1e3d67be, type: 2}
+  - {fileID: 11400000, guid: 04985aa2a506a694ba723e8a13085803, type: 2}
+  - {fileID: 11400000, guid: 702bd165071c3474a9e3c636a3827e59, type: 2}
+  - {fileID: 11400000, guid: 17705ffe8c647444eb59a9068858c7e7, type: 2}
+  - {fileID: 11400000, guid: 4ccee8cfff57c054aafc9415f6bd9935, type: 2}
+  - {fileID: 11400000, guid: c402cdab763296841954128b10204538, type: 2}
+  - {fileID: 11400000, guid: a59cd51e8d7a4d748a60284546422030, type: 2}
+  - {fileID: 11400000, guid: 712dc4cc32fbd224593cb54c7b68e064, type: 2}
+  - {fileID: 11400000, guid: 5f994499d617e8d40928a7628e16b0a1, type: 2}
   quizInputSOs:
   - {fileID: 11400000, guid: 7cbff8d45cb026a42816b32fecaa3e56, type: 2}
 --- !u!224 &2135101286 stripped
@@ -17953,13 +17965,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08141fe3b9b9d7841b3db02a779783ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sentence: 'I''m sorry to inform you that we will not be moving forward with you
-    this time.
-
-
-    Try Again!!!'
+  Sentence: Try Again!!!
   text: {fileID: 2576366827172062925}
-  typingSpeed: 0.1
+  typingSpeed: 0.026
   speedRange:
     min: 0
     max: 0
@@ -18439,12 +18447,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08141fe3b9b9d7841b3db02a779783ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sentence: 'OMG!!! You are so talented!!!
-
-
-    We want you in our team! :)'
+  Sentence: OMG!!! You are so incredible!
   text: {fileID: 2576366827561069328}
-  typingSpeed: 0.1
+  typingSpeed: 0.026
   speedRange:
     min: 0
     max: 0

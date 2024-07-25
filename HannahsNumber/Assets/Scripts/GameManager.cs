@@ -371,7 +371,7 @@ public class GameManager : Singleton<GameManager>
 		LaserPanel.SetActive(true);
 
 		laserCountdown -= Time.deltaTime;
-		float countDown = ((PowerUpDelay - laserCountdown) / PowerUpDelay);
+		float countDown = 1f - ((PowerUpDelay - laserCountdown) / PowerUpDelay);
 
 		LaserRadial.fillAmount = countDown;
 	}
@@ -397,7 +397,7 @@ public class GameManager : Singleton<GameManager>
 		EnemyDamageAmount = 3;
 
 		multiplierCountDown -= Time.deltaTime;
-		float countDown = ((PowerUpDelay - multiplierCountDown) / PowerUpDelay);
+		float countDown = 1f - ((PowerUpDelay - multiplierCountDown) / PowerUpDelay);
 
 		MultiplierRadial.fillAmount = countDown;
 	}
@@ -420,7 +420,7 @@ public class GameManager : Singleton<GameManager>
 		Shield.SetActive(true);
 
 		invincibleCountDown -= Time.deltaTime;
-		float countDown = ((PowerUpDelay - invincibleCountDown) / PowerUpDelay);
+		float countDown = 1f - ((PowerUpDelay - invincibleCountDown) / PowerUpDelay);
 
 		InvincibleRadial.fillAmount = countDown;
 	}
